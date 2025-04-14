@@ -1,0 +1,26 @@
+data_info:
+  name: ""  # Choose the dataset used: FAVC (FakeAVCeleb), AV1M (AV-Deepfake1M)
+  root_path: ""  # Data root path 
+  avhubert_model: "self_large_vox_433h"  # AVHuBERT checkpoint
+  csv_root_path: ""  # Path to the folder containing split csv's
+  apply_l2: True  # Apply l2 normalization of input features (always used in our experiments)
+
+model_hparams:
+  model_type: "mlp"  # mlp or linear
+  input_type: "both"  # both, video, audio (choose either to use both modalities or just one of them)
+
+callbacks:
+  logger:
+    log_path: "outputs/logs"
+    name: "csv"
+  ckpt_args:
+    ckpt_dir: "outputs/ckpts"
+    metric: "val_loss"
+    mode: "min"
+  early_stopping:
+    metric: "val_loss"
+    mode: "min"
+    patience: 10
+
+epochs: 100
+seed: 43
