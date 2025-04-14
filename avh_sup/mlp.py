@@ -75,7 +75,7 @@ class AVH_Sup(L.LightningModule):
         return scores
 
     def training_step(self, batch, batch_idx):
-        video_feats, audio_feats, _, labels, _ = batch
+        video_feats, audio_feats, labels, _ = batch
 
         output = self.forward((video_feats, audio_feats))
         score = output.unsqueeze(1)
@@ -87,7 +87,7 @@ class AVH_Sup(L.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        video_feats, audio_feats, _, labels, _ = batch
+        video_feats, audio_feats, labels, _ = batch
 
         output = self.forward((video_feats, audio_feats))
         score = output.unsqueeze(1)
