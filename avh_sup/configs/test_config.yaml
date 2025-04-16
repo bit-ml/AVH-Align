@@ -5,7 +5,6 @@ data_info:
   csv_root_path: ""  # Path to the folder containing split csv's
   apply_l2: True  # Apply l2 normalization of input features (always used in our experiments)
 
-hparams_path: ""  # Path to the hparams generated for the model 
 ckpt_path: ""  # Path to the model ckpt
 
 output_path: ""  # Path to output folder
