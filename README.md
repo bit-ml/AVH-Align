@@ -50,6 +50,7 @@ Main prerequisites:
 * `pytorch=2.2.0` (older version for compability with AVHubert)
 * `pytorch-cuda=12.4`
 * `torchvision=0.17`
+* `lightning=2.4.0`
 * `scikit-learn=1.3.2`
 * `pandas=2.1.1`
 * `numpy=1.26.4`

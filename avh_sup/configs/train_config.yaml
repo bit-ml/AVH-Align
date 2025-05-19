@@ -1,7 +1,6 @@
 data_info:
   name: ""  # Choose the dataset used: FAVC (FakeAVCeleb), AV1M (AV-Deepfake1M)
   root_path: ""  # Data root path 
-  avhubert_model: "self_large_vox_433h"  # AVHuBERT checkpoint
   csv_root_path: ""  # Path to the folder containing split csv's
   apply_l2: True  # Apply l2 normalization of input features (always used in our experiments)
 
@@ -11,10 +10,10 @@ model_hparams:
 
 callbacks:
   logger:
-    log_path: "outputs/logs"
+    log_path: "outputs/logs"  # Path to the directory where the logs will be saved
     name: "csv"
   ckpt_args:
-    ckpt_dir: "outputs/ckpts"
+    ckpt_dir: "outputs/ckpts"  # Path to the directory where the checkpoints will be saved
     metric: "val_loss"
     mode: "min"
   early_stopping:

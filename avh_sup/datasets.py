@@ -12,13 +12,12 @@ class AV1M_trainval_dataset(Dataset):
     def __init__(self, config, split="train"):
         self.config = config
         self.split = split
-        self.avhubert_model = self.config["avhubert_model"]
 
         self.root_path = self.config["root_path"]
         self.csv_root_path = self.config["csv_root_path"]
 
         self.df = pd.read_csv(os.path.join(self.csv_root_path, f"{self.split}_labels.csv"))
-        self.feats_dir = os.path.join(self.root_path, "av_hubert_features", self.avhubert_model, self.split)
+        self.feats_dir = os.path.join(self.root_path, self.split)
 
     def __len__(self):
         return len(self.df.index)
@@ -41,9 +40,8 @@ class AV1M_trainval_dataset(Dataset):
 class AV1M_test_dataset(Dataset):
     def __init__(self, config):
         self.config = config
-        self.avhubert_model = config["avhubert_model"]
         self.csv_root_path = self.config["csv_root_path"]
-        self.root_path = os.path.join(config["root_path"], self.avhubert_model, "test_features")
+        self.root_path = os.path.join(config["root_path"], "test_features")
 
         self.paths = np.load(os.path.join(self.root_path, "paths.npy"), allow_pickle=True)
         self.audio_feats = np.load(os.path.join(self.root_path, "audio.npy"), allow_pickle=True)
@@ -88,10 +86,9 @@ class AVLips_Dataset(Dataset):
     def __init__(self, config):
         self.config = config
         self.root_path = config["root_path"]
-        self.avhubert_model = self.config["avhubert_model"]
 
-        dir_path_real = os.path.join(self.root_path, self.avhubert_model, "0_real")
-        dir_path_fake = os.path.join(self.root_path, self.avhubert_model, "1_fake")
+        dir_path_real = os.path.join(self.root_path, "0_real")
+        dir_path_fake = os.path.join(self.root_path, "1_fake")
 
         paths_real = np.load(os.path.join(dir_path_real, "paths.npy"), allow_pickle=True)
         paths_fake = np.load(os.path.join(dir_path_fake, "paths.npy"), allow_pickle=True)
@@ -131,23 +128,21 @@ class FakeAVCeleb_Dataset(Dataset):
     def __init__(self, config, split):
         self.config = config
         self.split = split
-        self.avhubert_model = self.config["avhubert_model"]
         self.root_path = self.config["root_path"]
         self.csv_root_path = self.config["csv_root_path"]
-        dir_path = os.path.join(self.root_path, "avhubert_checkpoints", self.avhubert_model)
 
         labels = pd.read_csv(os.path.join(self.csv_root_path, f"{split}_split.csv"))
 
         self.videos, self.audios, self.paths = np.array([]), np.array([]), np.array([])
 
-        for folder_name in os.listdir(dir_path):
-            vids = np.load(os.path.join(dir_path, folder_name, "video.npy"), allow_pickle=True)
+        for folder_name in os.listdir(self.root_path):
+            vids = np.load(os.path.join(self.root_path, folder_name, "video.npy"), allow_pickle=True)
             self.videos = np.concatenate((self.videos, vids))
 
-            auds = np.load(os.path.join(dir_path, folder_name, "audio.npy"), allow_pickle=True)
+            auds = np.load(os.path.join(self.root_path, folder_name, "audio.npy"), allow_pickle=True)
             self.audios = np.concatenate((self.audios, auds))
 
-            ps = np.load(os.path.join(dir_path, folder_name, "paths.npy"), allow_pickle=True)
+            ps = np.load(os.path.join(self.root_path, folder_name, "paths.npy"), allow_pickle=True)
             self.paths = np.concatenate((self.paths, ps))
 
         self.useful_data = []
