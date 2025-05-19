@@ -13,7 +13,7 @@
 To set up your data, follow these steps:
 
 **Download the datasets:**
-   - **AV1M Dataset:** Follow instructions from [AV-Deepfake1M](https://github.com/ControlNet/AV-Deepfake1M)
+   - **AV-Deepfake1M(AV1M) Dataset:** Follow instructions from [AV-Deepfake1M](https://github.com/ControlNet/AV-Deepfake1M)
    - **FakeAVCeleb Dataset:** Follow instructions from [FakeAVCeleb GitHub repo](https://github.com/DASH-Lab/FakeAVCeleb)
    - **AVLips Dataset:** Follow instructions from [LipFD GitHub repo](https://github.com/AaronComo/LipFD)
 
@@ -42,6 +42,10 @@ wget https://dl.fbaipublicfiles.com/avhubert/model/lrs3_vox/vsr/self_large_vox_4
 mv self_large_vox_433h.pt av_hubert/avhubert/self_large_vox_433h.pt
 ```
 
+This repository also integrates code from the following repositories:
+- [FACTOR](https://github.com/talreiss/FACTOR)
+- [AV-Hubert](https://github.com/facebookresearch/av_hubert)
+
 ## Installation
 
 Main prerequisites:
@@ -49,21 +53,21 @@ Main prerequisites:
 * `Python 3.10.14`
 * `pytorch=2.2.0` (older version for compability with AVHubert)
 * `pytorch-cuda=12.4`
-* `torchvision=0.17`
 * `lightning=2.4.0`
-* `scikit-learn=1.3.2`
-* `pandas=2.1.1`
-* `numpy=1.26.4`
-* `pillow=10.0.1`
-* `librosa=0.9.1`
-* `dlib=19.24.99`
-* `skvideo=1.1.10`
-* `ffmpeg=4.3`
+* `torchvision>=0.17`
+* `scikit-learn>=1.3.2`
+* `pandas>=2.1.1`
+* `numpy>=1.26.4`
+* `pillow>=10.0.1`
+* `librosa>=0.9.1`
+* `dlib>=19.24.9`
+* `skvideo>=1.1.10`
+* `ffmpeg>=4.3`
 
 ## Feature extraction
 
 1. **Preprocess video files**
-Run deepfake_preprocess.py from av_hubert/avhubert. Example for AV1M
+Run deepfake_preprocess.py from av_hubert/avhubert. Example for AV-Deepfake1M
 ```bash
 python deepfake_preprocess.py \
     --dataset AV1M \
@@ -83,7 +87,7 @@ python deepfake_preprocess.py \
 ```
 
 2. **Extract features**
-Run deepfake_feature_extraction.py from av_hubert/avhubert. Example for AV1M
+Run deepfake_feature_extraction.py from av_hubert/avhubert. Example for AV-Deepfake1M
 
 ```bash
 python deepfake_feature_extraction.py \
@@ -119,7 +123,7 @@ add ```--trimmed``` for the trimmed version of features
  The model weights will be available at `<save_path>/<name>.pt`
 
 ## Pretrained Models
-We provide weights for our AVH-Align model trained on 45000 real videos from AV1M in `checkpoints/AVH-Align_AV1M.pt`.
+We provide weights for our AVH-Align model trained on 45000 real videos from AV-Deepfake1M in `checkpoints/AVH-Align_AV1M.pt`.
 
 ## Evaluation
 
