@@ -42,6 +42,10 @@ wget https://dl.fbaipublicfiles.com/avhubert/model/lrs3_vox/vsr/self_large_vox_4
 mv self_large_vox_433h.pt av_hubert/avhubert/self_large_vox_433h.pt
 ```
 
+This repository also integrates code from the following repositories:
+- [FACTOR](https://github.com/talreiss/FACTOR)
+- [AV-Hubert](https://github.com/facebookresearch/av_hubert)
+
 ## Installation
 
 Main prerequisites:
@@ -55,7 +59,7 @@ Main prerequisites:
 * `numpy=1.26.4`
 * `pillow=10.0.1`
 * `librosa=0.9.1`
-* `dlib=19.24.99`
+* `dlib=19.24.9`
 * `skvideo=1.1.10`
 * `ffmpeg=4.3`
 

@@ -1,3 +1,5 @@
+# this file incorporates code from Reiss et al. FACTOR(https://github.com/talreiss/FACTOR)
+
 import argparse
 import os
 
