@@ -53,15 +53,15 @@ Main prerequisites:
 * `Python 3.10.14`
 * `pytorch=2.2.0` (older version for compability with AVHubert)
 * `pytorch-cuda=12.4`
-* `torchvision=0.17`
-* `scikit-learn=1.3.2`
-* `pandas=2.1.1`
-* `numpy=1.26.4`
-* `pillow=10.0.1`
-* `librosa=0.9.1`
-* `dlib=19.24.9`
-* `skvideo=1.1.10`
-* `ffmpeg=4.3`
+* `torchvision>=0.17`
+* `scikit-learn>=1.3.2`
+* `pandas>=2.1.1`
+* `numpy>=1.26.4`
+* `pillow>=10.0.1`
+* `librosa>=0.9.1`
+* `dlib>=19.24.9`
+* `skvideo>=1.1.10`
+* `ffmpeg>=4.3`
 
 ## Feature extraction
 
