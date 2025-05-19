@@ -13,7 +13,7 @@
 To set up your data, follow these steps:
 
 **Download the datasets:**
-   - **AV1M Dataset:** Follow instructions from [AV-Deepfake1M](https://github.com/ControlNet/AV-Deepfake1M)
+   - **AV-Deepfake1M(AV1M) Dataset:** Follow instructions from [AV-Deepfake1M](https://github.com/ControlNet/AV-Deepfake1M)
    - **FakeAVCeleb Dataset:** Follow instructions from [FakeAVCeleb GitHub repo](https://github.com/DASH-Lab/FakeAVCeleb)
    - **AVLips Dataset:** Follow instructions from [LipFD GitHub repo](https://github.com/AaronComo/LipFD)
 
@@ -66,7 +66,7 @@ Main prerequisites:
 ## Feature extraction
 
 1. **Preprocess video files**
-Run deepfake_preprocess.py from av_hubert/avhubert. Example for AV1M
+Run deepfake_preprocess.py from av_hubert/avhubert. Example for AV-Deepfake1M
 ```bash
 python deepfake_preprocess.py \
     --dataset AV1M \
@@ -86,7 +86,7 @@ python deepfake_preprocess.py \
 ```
 
 2. **Extract features**
-Run deepfake_feature_extraction.py from av_hubert/avhubert. Example for AV1M
+Run deepfake_feature_extraction.py from av_hubert/avhubert. Example for AV-Deepfake1M
 
 ```bash
 python deepfake_feature_extraction.py \
@@ -122,7 +122,7 @@ add ```--trimmed``` for the trimmed version of features
  The model weights will be available at `<save_path>/<name>.pt`
 
 ## Pretrained Models
-We provide weights for our AVH-Align model trained on 45000 real videos from AV1M in `checkpoints/AVH-Align_AV1M.pt`.
+We provide weights for our AVH-Align model trained on 45000 real videos from AV-Deepfake1M in `checkpoints/AVH-Align_AV1M.pt`.
 
 ## Evaluation
 
